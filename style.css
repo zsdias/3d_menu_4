@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #FCF6F5; /* Светлый фон */
+    background-color: #FCF6F5; 
     color: black; /* Темный текст */
     margin: 0;
     padding: 0;
@@ -10,23 +10,34 @@ body {
     max-width: 900px;
     margin: auto;
     padding: 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.7);
+    height: 50px;
+    margin-bottom: 40px;
 }
 
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #FCF6F5; /* Светлый фон */
-    border-radius: 30px;
+    background: #FCF6F5; 
+    position: relative;
+    max-width: 100%;
+    top: -20px;
 }
 
 .header img {
-    width: 50px;
+    width: 200px;
+    left: -50px;
+}
+
+.header h1 {
+    flex-grow: 1;
+    text-align: center; /* Центрирование текста */
 }
 
 .nav-wrapper {
     position: relative;
-    top: -20px; /* Позиция под заголовком */
+    top: -60px; /* Позиция под заголовком */
     width: 100%; /* Ширина на всю страницу */
     z-index: 999; /* Чтобы находилось под заголовком */
     background-color: #FCF6F5; /* Светлый фон для навигации */
@@ -53,31 +64,33 @@ body {
     display: inline-block;
     padding: 12px 20px;
     cursor: pointer;
-    color: black; /* Темный текст */
+    color: #aaa;
     margin: 5px;
     border-radius: 30px;
     transition: background 0.3s;
 }
 
+
 .nav-tabs li.active {
-    background-color: #990011; /* Вишневый для выделения */
-    color: white; /* Белый текст для активного элемента */
+    background-color: #db0921; /* Вишневый для выделения */
+    color: #FCF6F5; /* Белый текст для активного элемента */
 }
 
 .nav-tabs li:hover {
     background-color: #c0392b; /* Яркий вишневый при наведении */
-    color: white; /* Белый текст при наведении */
+    color: w#FCF6F5; /* Белый текст при наведении */
 }
 
 .combo-section {
-    margin-bottom: 20px;
     background-color: #FCF6F5; /* Вишневый фон секций */
     padding: 20px;
+    margin-top: -80px;
+    margin-bottom: 80px;
 }
 
 h2 {
     margin: 0 0 15px;
-    color: #FF6F61; /* Ярко-розовый заголовок */
+    color: black; 
 }
 
 .grid {
@@ -88,13 +101,13 @@ h2 {
 
 .card {
     background: #FCF6F5; /* Светлый фон для карточек */
-    border: 2px solid #990011; /* Вишневый бордер */
     border-radius: 30px;
     padding: 15px;
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     color: black; /* Черный текст на карточках */
+    height: 30px;
 }
 
 .card:hover {
@@ -122,7 +135,7 @@ h2 {
     left: 0;
     right: 0;
     height: 70%; /* Высота модального окна */
-    background-color: white;
+    background-color:#FCF6F5;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease; /* Плавный переход */
     transform: translateY(100%); /* Скрываем модальное окно за нижней границей */
@@ -149,7 +162,7 @@ h2 {
 
 .price {
     font-weight: bold;
-    color: #990011; /* Вишневый для цены */
+    color: #db0921; /* Вишневый для цены */
 }
 
 .swipe-indicator {
@@ -183,7 +196,7 @@ h2 {
     text-align: center;
     font-size: 24px;
     margin: 20px 0;
-    color: #FF6F61; /* Ярко-розовый для заголовка */
+    color: black; /* Ярко-розовый для заголовка */
     font-weight: bold;
 }
 
@@ -195,6 +208,7 @@ h2 {
     margin-bottom: 40px;
     align-items: center;
     justify-content: center;
+    top: -29px;
 }
 
 .search-box input[type="text"] {
@@ -203,7 +217,7 @@ h2 {
     border-radius: 20px;
     border: 1px solid #ccc; /* Светло-серый бордер */
     outline: none;
-    background-color: #f7f7f7; /* Очень светлый серый для поля поиска */
+    background-color: #FCF6F5; /* Очень светлый серый для поля поиска */
     color: #333333; /* Темно-серый текст */
     font-size: 16px;
 }
@@ -211,8 +225,8 @@ h2 {
 .search-box button {
     padding: 10px 20px;
     border-radius: 20px;
-    background-color: #990011; /* Вишневый для кнопки */
-    color: white; /* Белый текст на кнопке */
+    background-color: #db0921; /* Вишневый для кнопки */
+    color: #FCF6F5; /* Белый текст на кнопке */
     font-weight: bold;
     border: none;
     cursor: pointer;
@@ -237,7 +251,7 @@ h2 {
     right: 0;
     width: 50%;
     height: 100%;
-    background-color: white;
+    background-color: #FCF6F5;
     transform: translateX(100%);
     box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.3);
     z-index: 1000;
