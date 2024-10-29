@@ -1,302 +1,167 @@
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #FCF6F5; 
-    color: black; /* Темный текст */
-    margin: 0;
-    padding: 0;
-}
+<!DOCTYPE html>
+<html lang="ru">
 
-.container {
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.7);
-    height: 50px;
-    margin-bottom: 40px;
-}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bahandi</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+</head>
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #FCF6F5; 
-    position: relative;
-    max-width: 100%;
-    top: -20px;
-}
+<body>
+    <script src="https://threejs.org/build/three.min.js"></script>
+    <script src="https://threejs.org/examples/js/loaders/GLTFLoader.js"></script>
+    <div class="container">
+        <div class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="swipe-indicator"></div> 
+                    <span class="close-button" style="font-size: 2em;">&times;</span> 
+                </div>
+                <h2>Заголовок модального окна</h2>
+                <div class="sketchfab-embed-wrapper"> <iframe title="New Qlone" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/76d9055e8bbb44e7a374f0a9cdeda44b/embed?autospin=1&autostart=1"> </iframe> <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"> <a href="https://sketchfab.com/3d-models/new-qlone-76d9055e8bbb44e7a374f0a9cdeda44b?utm_medium=embed&utm_campaign=share-popup&utm_content=76d9055e8bbb44e7a374f0a9cdeda44b" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">  </a>  <a href="https://sketchfab.com/zsdias?utm_medium=embed&utm_campaign=share-popup&utm_content=76d9055e8bbb44e7a374f0a9cdeda44b" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">  </a> <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=76d9055e8bbb44e7a374f0a9cdeda44b" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"></a></p></div>
+                    <p>Говяжий Чизбургер, большой картофель фри, Pepsi 0,5</p>
+            </div>
+        </div>
+        
+        <div class="side-menu" id="sideMenu">
+            <button class="close-button" onclick="toggleSideMenu()">&times;</button>
+            <h2>Меню</h2>
+            <p>Содержимое бокового меню</p>
+        </div>
 
-.header img {
-    width: 200px;
-    left: -50px;
-}
+        <div class="header">
+            <img src="img/11111_page-0001.jpg" alt="Логотип">
+            <button class="menu-button" onclick="toggleSideMenu()">&#9776;</button>
+        </div>
+        </div>
 
-.header h1 {
-    flex-grow: 1;
-    text-align: center; /* Центрирование текста */
-}
+        <div class="search-box">
+            <input type="text" id="searchBox" placeholder="Поиск...">
+            <button onclick="search()">Поиск</button>
+        </div>
 
-.nav-wrapper {
-    position: relative;
-    top: -60px; /* Позиция под заголовком */
-    width: 100%; /* Ширина на всю страницу */
-    z-index: 999; /* Чтобы находилось под заголовком */
-    background-color: #FCF6F5; /* Светлый фон для навигации */
-    transition: top 0.3s; /* Плавный переход при прокрутке */
-    overflow-x: auto; /* Горизонтальный скролл */
-    white-space: nowrap;
-}
+        <div class="nav-wrapper" id="nav">
+            <ul class="nav-tabs">
+                <li class="active">Комбо</li>
+                <li id="link1">Бургеры</li>
+                <li id="link2">Пицца</li>
+                <li id="link3">Роллы</li>
+                <li>Напитки</li>
+                <li>Соусы</li>
+                <li>Новинки</li>
+                <li>Доставка</li>
+            </ul>
+        </div>
 
-.fixed {
-    position: fixed; /* Фиксированное положение */
-    top: 0; /* Вверху страницы */
-}
+        <div class="combo-section">
+            <h2 class="section-title">Комбо</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="price">2 700₸</div>
+                    <div class="name">Menu Cheese Burger beef</div>
+                    
+                </div>
+                <div class="card">
+                    <div class="price">3 200₸</div>
+                    <div class="name">Menu Cheese Burger beef x2</div>
+                    
+                </div>
+                <div class="card">
+                    <div class="price">2 700₸</div>
+                    <div class="name">Menu Cheese Burger beef</div>
+                    
+                </div>
+                <div class="card">
+                    <div class="price">2 700₸</div>
+                    <div class="name">Menu Cheese Burger beef</div>
+                   
+                </div>
+            </div>
+        </div>
 
-.nav-tabs {
-    display: inline-block;
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-    background-color: #FCF6F5; /* Светлый фон */
-    border-radius: 30px;
-}
+        <div class="combo-section" id="burgers-section">
+            <h2 class="section-title">Бургеры</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="price">2 700₸</div>
+                    <div class="name">Menu Cheese Burger beef</div>
+                   
+                </div>
+                <div class="card">
+                    <div class="price">3 200₸</div>
+                    <div class="name">Menu Cheese Burger beef x2</div>
+                   
+                </div>
+                <div class="card">
+                    <div class="price">2 700₸</div>
+                    <div class="name">Menu Cheese Burger beef</div>
+                    
+                </div>
+                <div class="card">
+                    <div class="price">2 700₸</div>
+                    <div class="name">Menu Cheese Burger beef</div>
 
-.nav-tabs li {
-    display: inline-block;
-    padding: 12px 20px;
-    cursor: pointer;
-    color: #aaa;
-    margin: 5px;
-    border-radius: 30px;
-    transition: background 0.3s;
-}
+                </div>
+            </div>
+        </div>
 
+        <div class="combo-section" id="pizza-section">
+            <h2 class="section-title">Пицца</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="price">2 700₸</div>
+                    <div class="name">Итальянская пицца</div>
+                    
+                </div>
+                <div class="card">
+                    <div class="price">3 200₸</div>
+                    <div class="name">Большая Пицца</div>
+                 
+                </div>
+                <div class="card">
+                    <div class="price">2 700₸</div>
+                    <div class="name">Пицца пеперони</div>
+                   
+                </div>
+                <div class="card">
+                    <div class="price">2 700₸</div>
+                    <div class="name">Семейная пицца</div>
+                 
+                </div>
+            </div>
+        </div>
 
-.nav-tabs li.active {
-    background-color: #db0921; /* Вишневый для выделения */
-    color: #FCF6F5; /* Белый текст для активного элемента */
-}
+        <div class="combo-section" id="sushi-section">
+            <h2 class="section-title">Роллы</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="price">2 700₸</div>
+                    <div class="name">Ролл Темпура</div>
+                 
+                </div>
+                <div class="card">
+                    <div class="price">3 200₸</div>
+                    <div class="name">Жареные Роллы</div>
+                    
+                </div>
+                <div class="card">
+                    <div class="price">2 700₸</div>
+                    <div class="name">Унаги Маки</div>
+                  
+                </div>
+                <div class="card">
+                    <div class="price">2 700₸</div>
+                    <div class="name">Ролл Цезарь</div>
+                    
+                </div>
+            </div>
+        </div>
 
-.nav-tabs li:hover {
-    background-color: #c0392b; /* Яркий вишневый при наведении */
-    color: w#FCF6F5; /* Белый текст при наведении */
-}
+    </div>
 
-.combo-section {
-    background-color: #FCF6F5; /* Вишневый фон секций */
-    padding: 20px;
-    margin-top: -80px;
-    margin-bottom: 80px;
-}
+    <script src="script.js"></script>
+</body>
 
-h2 {
-    margin: 0 0 15px;
-    color: black; 
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 20px;
-}
-
-.card {
-    background: #FCF6F5; /* Светлый фон для карточек */
-    border-radius: 30px;
-    padding: 15px;
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    color: black; /* Черный текст на карточках */
-    height: 30px;
-}
-
-.card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
-}
-
-@keyframes gb-popup-slide-zoom-bottom {
-    0% {
-        opacity: 0;
-        transform-origin: 50% 100%; /* Установка точки трансформации в нижней части */
-        transform: scale(0.2) translateY(100%); /* Начальное положение ниже видимой области */
-    }
-    100% {
-        opacity: 1;
-        transform-origin: 50% 100%; /* Установка точки трансформации в нижней части */
-        transform: scale(1) translateY(0); /* Конечное положение */
-    }
-}
-
-.modal {
-    display: none; /* Скрываем модальное окно по умолчанию */
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 70%; /* Высота модального окна */
-    background-color:#FCF6F5;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease; /* Плавный переход */
-    transform: translateY(100%); /* Скрываем модальное окно за нижней границей */
-    z-index: 1000; /* Убедитесь, что модальное окно выше других элементов */
-    border-radius: 30px 30px 0 0;
-}
-
-.modal.show {
-    display: block; /* Показываем модальное окно */
-    animation: gb-popup-slide-zoom-bottom 1s cubic-bezier(0.215, 0.610, 0.355, 1.000); /* Применяем анимацию */
-    transform: translateY(0); /* Перемещаем модальное окно на место */
-}
-
-.modal-content {
-    padding: 20px;
-    height: 100%;
-    overflow: auto; /* Прокрутка содержимого при необходимости */
-}
-
-.modal-header {
-    position: relative;
-    padding: 10px;
-}
-
-.price {
-    font-weight: bold;
-    color: #db0921; /* Вишневый для цены */
-}
-
-.swipe-indicator {
-    width: 50px; /* Ширина линии */
-    height: 5px; /* Высота линии */
-    background-color: #333; /* Цвет линии */
-    margin: 0 auto; /* Центрируем линию */
-    border-radius: 5px; /* Закругленные края */
-    cursor: pointer; /* Указатель курсора */
-}
-
-.close-button {
-    color: #aaa; /* Светлый цвет кнопки закрытия */
-    float: right; /* Позиционируем крестик справа */
-    font-size: 30px; /* Увеличиваем размер крестика */
-    font-weight: bold;
-    cursor: pointer;
-    position: absolute; /* Абсолютное позиционирование */
-    top: 10px; /* Расстояние от верхней грани */
-    right: 15px; /* Расстояние от правой грани */
-}
-
-.close-button:hover,
-.close-button:focus {
-    color: black; /* Цвет при наведении */
-    text-decoration: none; /* Убираем подчеркивание */
-    cursor: pointer;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 24px;
-    margin: 20px 0;
-    color: black; /* Ярко-розовый для заголовка */
-    font-weight: bold;
-}
-
-.search-box {
-    display: flex;
-    width: 100%;
-    gap: 10px;
-    position: relative;
-    margin-bottom: 40px;
-    align-items: center;
-    justify-content: center;
-    top: -29px;
-}
-
-.search-box input[type="text"] {
-    width: 65%;
-    padding: 10px;
-    border-radius: 20px;
-    border: 1px solid #ccc; /* Светло-серый бордер */
-    outline: none;
-    background-color: #FCF6F5; /* Очень светлый серый для поля поиска */
-    color: #333333; /* Темно-серый текст */
-    font-size: 16px;
-}
-
-.search-box button {
-    padding: 10px 20px;
-    border-radius: 20px;
-    background-color: #db0921; /* Вишневый для кнопки */
-    color: #FCF6F5; /* Белый текст на кнопке */
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.search-box button:hover {
-    background-color: #c0392b; /* Ярче вишневый при наведении */
-}
-
-.menu-button {
-    font-size: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-/* Стиль бокового меню */
-.side-menu {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 50%;
-    height: 100%;
-    background-color: #FCF6F5;
-    transform: translateX(100%);
-    box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    opacity: 0;
-    transition: transform 0.5s ease, opacity 0.5s ease;
-}
-
-.show-side-menu {
-    animation: gb-popup-slide-zoom-right 0.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
-}
-
-/* Кнопка закрытия меню */
-.close-button {
-    font-size: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    align-self: flex-end;
-    margin-bottom: 20px;
-}
-
-/* Анимация выезда меню справа */
-@keyframes gb-popup-slide-zoom-right {
-    0% {
-        opacity: 0;
-        transform: scale(0.8) translateX(100%);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1) translateX(0);
-    }
-}
-
-.sketchfab-embed-wrapper {
-    width: 100%;
-    border: 2px solid #000;
-    padding: 10px;
-    box-sizing: border-box;
-    border-radius: 30px;
-}
-
-iframe {
-    width: 100%;
-    height: 50%; /* Вы можете изменить высоту по вашему желанию */
-}
+</html>
