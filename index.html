@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bahandi</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="swipe-indicator"></div> <!-- Линия для свайпа -->
+                    <span class="close-button" style="font-size: 2em;">&times;</span> <!-- Увеличиваем размер крестика -->
+                </div>
+                <h2>Заголовок модального окна</h2>
+                <div class="sketchfab-embed-wrapper"> <iframe title="New Qlone" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/76d9055e8bbb44e7a374f0a9cdeda44b/embed"> </iframe> <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"> <a href="https://sketchfab.com/3d-models/new-qlone-76d9055e8bbb44e7a374f0a9cdeda44b?utm_medium=embed&utm_campaign=share-popup&utm_content=76d9055e8bbb44e7a374f0a9cdeda44b" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> New Qlone </a> by <a href="https://sketchfab.com/zsdias?utm_medium=embed&utm_campaign=share-popup&utm_content=76d9055e8bbb44e7a374f0a9cdeda44b" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> zsdias </a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=76d9055e8bbb44e7a374f0a9cdeda44b" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a></p></div>
+            </div>
+        </div>
+        
+        <div class="side-menu" id="sideMenu">
+            <button class="close-button" onclick="toggleSideMenu()">&times;</button>
+            <h2>Меню</h2>
+            <p>Содержимое бокового меню</p>
+        </div>
+
+        <div class="header">
+            <img src="img/Untitled_logo_1_free-file.jpg" alt="Логотип">
+            <h1>3D MENU</h1>
+            <button class="menu-button" onclick="toggleSideMenu()">&#9776;</button>
+        </div>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchBox" placeholder="Поиск...">
+            <button onclick="search()">Поиск</button>
+        </div>
+
+        <div class="nav-wrapper" id="nav">
+            <ul class="nav-tabs">
+                <li class="active">Комбо</li>
+                <li id="link1">Бургеры</li>
+                <li id="link2">Пицца</li>
+                <li id="link3">Роллы</li>
+                <li>Напитки</li>
+                <li>Соусы</li>
+                <li>Новинки</li>
+                <li>Доставка</li>
+            </ul>
+        </div>
+
+        <div class="combo-section">
+            <h2 class="section-title">Комбо</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="price">2 700₸</div>
+                    <div class="name">Menu Cheese Burger beef</div>
+                    <div class="weight">260 г</div>
+                </div>
+                <div class="card">
+                    <div class="price">3 200₸</div>
+                    <div class="name">Menu Cheese Burger beef x2</div>
+                    <div class="weight">350 г</div>
+                </div>
+                <div class="card">
+                    <div class="price">2 700₸</div>
+                    <div class="name">Menu Cheese Burger beef</div>
+                    <div class="weight">260 г</div>
+                </div>
+                <div class="card">
+                    <div class="price">2 700₸</div>
+                    <div class="name">Menu Cheese Burger beef</div>
+                    <div class="weight">260 г</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="combo-section" id="burgers-section">
+            <h2 class="section-title">Бургеры</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="price">2 700₸</div>
+                    <div class="name">Menu Cheese Burger beef</div>
+                    <div class="weight">260 г</div>
+                </div>
+                <div class="card">
+                    <div class="price">3 200₸</div>
+                    <div class="name">Menu Cheese Burger beef x2</div>
+                    <div class="weight">350 г</div>
+                </div>
+                <div class="card">
+                    <div class="price">2 700₸</div>
+                    <div class="name">Menu Cheese Burger beef</div>
+                    <div class="weight">260 г</div>
+                </div>
+                <div class="card">
+                    <div class="price">2 700₸</div>
+                    <div class="name">Menu Cheese Burger beef</div>
+                    <div class="weight">260 г</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="combo-section" id="pizza-section">
+            <h2 class="section-title">Пицца</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="price">2 700₸</div>
+                    <div class="name">Итальянская пицца</div>
+                    <div class="weight">260 г</div>
+                </div>
+                <div class="card">
+                    <div class="price">3 200₸</div>
+                    <div class="name">Большая Пицца</div>
+                    <div class="weight">350 г</div>
+                </div>
+                <div class="card">
+                    <div class="price">2 700₸</div>
+                    <div class="name">Пицца пеперони</div>
+                    <div class="weight">260 г</div>
+                </div>
+                <div class="card">
+                    <div class="price">2 700₸</div>
+                    <div class="name">Семейная пицца</div>
+                    <div class="weight">260 г</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="combo-section" id="sushi-section">
+            <h2 class="section-title">Роллы</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="price">2 700₸</div>
+                    <div class="name">Ролл Темпура</div>
+                    <div class="weight">260 г</div>
+                </div>
+                <div class="card">
+                    <div class="price">3 200₸</div>
+                    <div class="name">Жареные Роллы</div>
+                    <div class="weight">350 г</div>
+                </div>
+                <div class="card">
+                    <div class="price">2 700₸</div>
+                    <div class="name">Унаги Маки</div>
+                    <div class="weight">260 г</div>
+                </div>
+                <div class="card">
+                    <div class="price">2 700₸</div>
+                    <div class="name">Ролл Цезарь</div>
+                    <div class="weight">260 г</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
