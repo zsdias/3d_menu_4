@@ -7,6 +7,10 @@
     <title>Bahandi</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <script src="https://cdn.skypack.dev/three@0.129.0/build/three.module.js"></script>
+    <script src="https://cdn.skypack.dev/three@0.129.0/examples/jsm/controls/OrbitControls.js"></script>
+    <script src="https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/OBJLoader.js"></script>
+    <script src="https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/MTLLoader.js"></script>
 </head>
 
 <body>
@@ -16,23 +20,21 @@
         <div class="modal">
             <div class="modal-content">
                 <div class="modal-header">
-                    <div class="swipe-indicator"></div> 
-                    <span class="close-button" style="font-size: 2em;">&times;</span> 
+                    <span class="close-button" style="font-size: 3em;">&times;</span>
                 </div>
-                <h2>Заголовок модального окна</h2>
-                <div class="sketchfab-embed-wrapper"> <iframe title="New Qlone" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/76d9055e8bbb44e7a374f0a9cdeda44b/embed?autospin=1&autostart=1"> </iframe> <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"> <a href="https://sketchfab.com/3d-models/new-qlone-76d9055e8bbb44e7a374f0a9cdeda44b?utm_medium=embed&utm_campaign=share-popup&utm_content=76d9055e8bbb44e7a374f0a9cdeda44b" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">  </a>  <a href="https://sketchfab.com/zsdias?utm_medium=embed&utm_campaign=share-popup&utm_content=76d9055e8bbb44e7a374f0a9cdeda44b" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">  </a> <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=76d9055e8bbb44e7a374f0a9cdeda44b" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"></a></p></div>
-                    <p>Говяжий Чизбургер, большой картофель фри, Pepsi 0,5</p>
+                <h2>Бургер</h2>
+                <div id="container3D" style="width: 100%; height: 400px;"></div>
+                <p>Говяжий Чизбургер, большой картофель фри, Pepsi 0,5</p>
             </div>
         </div>
-        
         <div class="side-menu" id="sideMenu">
-            <button class="close-button" onclick="toggleSideMenu()">&times;</button>
+            <span class="close-button1" style="font-size: 3em;">&times;</span>
             <h2>Меню</h2>
             <p>Содержимое бокового меню</p>
         </div>
 
         <div class="header">
-            <img src="img/11111_page-0001.jpg" alt="Логотип">
+            <img src="img/photo_5267501660689785948_w.jpg" alt="Логотип">
             <button class="menu-button" onclick="toggleSideMenu()">&#9776;</button>
         </div>
         </div>
@@ -160,7 +162,6 @@
         </div>
 
     </div>
-
     <script src="script.js"></script>
 </body>
 
