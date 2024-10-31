@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #FCF6F5; 
+    background-color: white; 
     color: black; /* Темный текст */
     margin: 0;
     padding: 0;
@@ -10,7 +10,7 @@ body {
     max-width: 900px;
     margin: auto;
     padding: 20px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.7);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     height: 50px;
     margin-bottom: 40px;
 }
@@ -19,7 +19,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #FCF6F5; 
+    background: white; 
     position: relative;
     max-width: 100%;
     top: -20px;
@@ -40,7 +40,7 @@ body {
     top: -60px; /* Позиция под заголовком */
     width: 100%; /* Ширина на всю страницу */
     z-index: 999; /* Чтобы находилось под заголовком */
-    background-color: #FCF6F5; /* Светлый фон для навигации */
+    background-color: white; /* Светлый фон для навигации */
     transition: top 0.3s; /* Плавный переход при прокрутке */
     overflow-x: auto; /* Горизонтальный скролл */
     white-space: nowrap;
@@ -56,7 +56,7 @@ body {
     padding: 0;
     margin: 0;
     list-style-type: none;
-    background-color: #FCF6F5; /* Светлый фон */
+    background-color: white; /* Светлый фон */
     border-radius: 30px;
 }
 
@@ -82,7 +82,7 @@ body {
 }
 
 .combo-section {
-    background-color: #FCF6F5; /* Вишневый фон секций */
+    background-color: white; /* Вишневый фон секций */
     padding: 20px;
     margin-top: -80px;
     margin-bottom: 80px;
@@ -100,12 +100,12 @@ h2 {
 }
 
 .card {
-    background: #FCF6F5; /* Светлый фон для карточек */
+    background: white; /* Светлый фон для карточек */
     border-radius: 30px;
     padding: 15px;
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     color: black; /* Черный текст на карточках */
     height: 30px;
 }
@@ -134,13 +134,13 @@ h2 {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 70%; /* Высота модального окна */
-    background-color:#FCF6F5;
+    height: 85%; /* Высота модального окна */
+    background-color:white;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease; /* Плавный переход */
+    transition: transform 0.001s ease; /* Плавный переход */
     transform: translateY(100%); /* Скрываем модальное окно за нижней границей */
     z-index: 1000; /* Убедитесь, что модальное окно выше других элементов */
-    border-radius: 30px 30px 0 0;
+    border-radius: 10px 10px 0 0;
 }
 
 .modal.show {
@@ -175,18 +175,41 @@ h2 {
 }
 
 .close-button {
-    color: #aaa; /* Светлый цвет кнопки закрытия */
+    color: #000; /* Цвет кнопки закрытия */
     float: right; /* Позиционируем крестик справа */
-    font-size: 30px; /* Увеличиваем размер крестика */
-    font-weight: bold;
+    font-size: 100%; /* Увеличиваем размер крестика */
+    font-weight: -10;
+    cursor: pointer;
+    position: absolute; /* Абсолютное позиционирование */
+    top: -20px; /* Расстояние от верхней грани */
+    right: -10px; /* Расстояние от правой грани */
+    padding: 5px; /* Отступ для удобства клика */
+    z-index: 10; /* Убедитесь, что крестик выше других элементов */
+}
+
+.close-button1 {
+    color: #000; /* Цвет кнопки закрытия */
+    float: right; /* Позиционируем крестик справа */
+    font-size: 100%; /* Увеличиваем размер крестика */
+    font-weight: -10;
     cursor: pointer;
     position: absolute; /* Абсолютное позиционирование */
     top: 10px; /* Расстояние от верхней грани */
     right: 15px; /* Расстояние от правой грани */
+    padding: 5px; /* Отступ для удобства клика */
+    z-index: 10; /* Убедитесь, что крестик выше других элементов */
 }
+
 
 .close-button:hover,
 .close-button:focus {
+    color: black; /* Цвет при наведении */
+    text-decoration: none; /* Убираем подчеркивание */
+    cursor: pointer;
+}
+
+.close-button1:hover,
+.close-button1:focus {
     color: black; /* Цвет при наведении */
     text-decoration: none; /* Убираем подчеркивание */
     cursor: pointer;
@@ -217,7 +240,7 @@ h2 {
     border-radius: 20px;
     border: 1px solid #ccc; /* Светло-серый бордер */
     outline: none;
-    background-color: #FCF6F5; /* Очень светлый серый для поля поиска */
+    background-color: white; /* Очень светлый серый для поля поиска */
     color: #333333; /* Темно-серый текст */
     font-size: 16px;
 }
@@ -251,7 +274,7 @@ h2 {
     right: 0;
     width: 50%;
     height: 100%;
-    background-color: #FCF6F5;
+    background-color: white;
     transform: translateX(100%);
     box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.3);
     z-index: 1000;
