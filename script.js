@@ -31,6 +31,7 @@ highlightActiveTab();
 const modal = document.querySelector('.modal');
 const closeButtons = document.querySelectorAll(".close-button");
 
+
 // Функция для открытия модального окна
 function openModal(info) {
     document.querySelector('.modal-content h2').innerText = info;
@@ -41,6 +42,8 @@ function openModal(info) {
 function closeModal() {
     modal.classList.remove('show');
 }
+
+
 
 // Закрытие модального окна при нажатии вне его
 window.onclick = function(event) {
@@ -111,35 +114,3 @@ function search() {
     }
 }
 
-const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
-
-        const light = new THREE.HemisphereLight(0xffffff, 0x444444);
-        light.position.set(0, 20, 0).normalize();
-        scene.add(light);
-
-        const loader = new THREE.GLTFLoader();
-        loader.load('model', (gltf) => {
-            scene.add(gltf.scene);
-            render();
-        }, undefined, (error) => {
-            console.error(error);
-        });
-
-        camera.position.z = 5;
-
-        function render() {
-            requestAnimationFrame(render);
-            renderer.render(scene, camera);
-        }
-
-        window.addEventListener('resize', () => {
-            const width = window.innerWidth;
-            const height = window.innerHeight;
-            renderer.setSize(width, height);
-            camera.aspect = width / height;
-            camera.updateProjectionMatrix();
-        });
