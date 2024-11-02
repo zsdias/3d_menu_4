@@ -323,3 +323,11 @@ iframe {
     width: 100%;
     height: 50%; /* Вы можете изменить высоту по вашему желанию */
 }
+
+#container3D {
+    border: 1px solid #ccc; /* Optional border */
+    background-color: white; /* Optional background color */
+    width: 100%;
+    height: 100%;
+}
+
