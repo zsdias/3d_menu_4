@@ -6,11 +6,11 @@ import { MTLLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/lo
 
 // Создание сцены
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 1000); 
+const camera = new THREE.PerspectiveCamera(90, window.innerWidth / 400, 0.1, 1000); 
 
 const renderer = new THREE.WebGLRenderer({ alpha: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.getElementById("container3D").appendChild(renderer.domElement);
+renderer.setSize(window.innerWidth, 400); // Устанавливаем размеры канваса
+document.getElementById("container3D").appendChild(renderer.domElement); // Добавляем канвас в контейнер
 
 // Загрузка 3D модели
 const mtlLoader = new MTLLoader();
@@ -20,8 +20,18 @@ mtlLoader.load('models/pizza/materials.mtl', (materials) => {
     materials.preload();
     objLoader.setMaterials(materials);
     objLoader.load('models/pizza/model_New Qlone_20241029_192058124.obj', (object) => {
-        object.scale.set(0.025, 0.025, 0.025); 
-        object.position.y = 6;
+        object.scale.set(0.3, 0.3, 0.3); // Увеличиваем масштаб модели
+
+        // Создаем Bounding Box для нахождения центра модели
+        const box = new THREE.Box3().setFromObject(object);
+        const center = box.getCenter(new THREE.Vector3());
+
+        // Устанавливаем позицию модели в центр
+        object.position.sub(center); // Сдвигаем модель так, чтобы её центр совпадал с (0, 0, 0)
+
+        // Поднимаем модель до середины контейнера
+        const containerHeight = 400; // Высота контейнера в пикселях
+        object.position.y = containerHeight / 2; // Устанавливаем Y позицию в половину высоты контейнера
 
         scene.add(object);
     }, (xhr) => {
@@ -30,7 +40,6 @@ mtlLoader.load('models/pizza/materials.mtl', (materials) => {
         console.error(error);
     });
 });
-
 
 // Добавление освещения
 const ambientLight = new THREE.AmbientLight(0x404040);
@@ -41,8 +50,8 @@ directionalLight.position.set(5, 5, 5);
 scene.add(directionalLight);
 
 // Установка позиции камеры
-camera.position.set(10, 11, 15); 
-
+camera.position.set(0, 200, 400); // Устанавливаем позицию камеры дальше от модели
+camera.lookAt(0, 0, 0); // Камера смотрит на центр модели
 
 // Управление камерой
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -56,11 +65,14 @@ function animate() {
 
 // Обработка изменения размера окна
 window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
+    const container = document.getElementById("container3D");
+    const width = container.clientWidth; // Получаем ширину контейнера
+    const height = 400; // Высота остается 400 пикселей
+
+    camera.aspect = width / height; // Обновляем аспект камеры
     camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(width, height); // Устанавливаем размеры канваса
 });
 
 // Запуск анимации
 animate();
-
