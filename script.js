@@ -57,6 +57,8 @@ closeButtons.forEach(button => {
     button.addEventListener('click', closeModal);
 });
 
+
+
 // Добавляем обработчик события для каждой карточки
 const cards = document.querySelectorAll('.card');
 cards.forEach(card => {
@@ -112,4 +114,27 @@ function search() {
     if (!found) {
         alert("Ничего не найдено");
     }
+
+    // Прокручиваем к соответствующему разделу, если введено "пицца"
+    if (input.includes("пицца")) {
+        scrollToElement('#pizza-section');
+    }
 }
+
+function scrollToElement(elementSelector, instance = 0) {
+    const elements = document.querySelectorAll(elementSelector);
+    if (elements.length > instance) {
+        const targetElement = elements[instance];
+        const offset = 70; // Задайте смещение (например, на высоту шапки)
+        
+        // Прокрутка с учетом смещения
+        window.scrollTo({
+            top: targetElement.offsetTop - offset,
+            behavior: 'smooth'
+        });
+    }
+}
+
+
+// Add event listener for side menu close button
+document.querySelector(".close-button1").addEventListener("click", toggleSideMenu);
