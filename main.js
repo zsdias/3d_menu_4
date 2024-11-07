@@ -1,4 +1,3 @@
-// Импорт библиотек Three.js
 import * as THREE from "https://cdn.skypack.dev/three@0.129.0/build/three.module.js";
 import { OrbitControls } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/controls/OrbitControls.js";
 import { OBJLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/OBJLoader.js";
@@ -6,13 +5,19 @@ import { MTLLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/lo
 
 // Создание сцены
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(90, window.innerWidth / 400, 0.1, 1000); 
+const camera = new THREE.PerspectiveCamera(90, window.innerWidth / 400, 0.1, 1000);
 
-const renderer = new THREE.WebGLRenderer({ alpha: true });
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true }); // Включаем антисальяцию
 renderer.setSize(window.innerWidth, 400); // Устанавливаем размеры канваса
 document.getElementById("container3D").appendChild(renderer.domElement); // Добавляем канвас в контейнер
 
-// Загрузка 3D модели
+const textureLoader = new THREE.TextureLoader();
+const texture = textureLoader.load('models/pizza/texture.jpg', (texture) => {
+    texture.minFilter = THREE.LinearFilter;  // Для более четкой текстуры при увеличении
+    texture.magFilter = THREE.LinearFilter;
+});
+
+// Загружаем модель
 const mtlLoader = new MTLLoader();
 const objLoader = new OBJLoader();
 
@@ -20,7 +25,15 @@ mtlLoader.load('models/pizza/materials.mtl', (materials) => {
     materials.preload();
     objLoader.setMaterials(materials);
     objLoader.load('models/pizza/model_New Qlone_20241029_192058124.obj', (object) => {
-        object.scale.set(0.3, 0.3, 0.3); // Увеличиваем масштаб модели
+        // Применяем текстуру к материалу
+        object.traverse((child) => {
+            if (child.isMesh) {
+                child.material.map = texture; // Применяем текстуру
+                child.material.needsUpdate = true; // Обновляем материал
+            }
+        });
+
+        object.scale.set(1, 1, 1); // Масштабируем модель в нормальный размер
 
         // Создаем Bounding Box для нахождения центра модели
         const box = new THREE.Box3().setFromObject(object);
@@ -31,7 +44,7 @@ mtlLoader.load('models/pizza/materials.mtl', (materials) => {
 
         // Поднимаем модель до середины контейнера
         const containerHeight = 400; // Высота контейнера в пикселях
-        object.position.y = containerHeight / 2; // Устанавливаем Y позицию в половину высоты контейнера
+        object.position.y = containerHeight / 1.25; // Устанавливаем Y позицию в половину высоты контейнера
 
         scene.add(object);
     }, (xhr) => {
@@ -42,10 +55,10 @@ mtlLoader.load('models/pizza/materials.mtl', (materials) => {
 });
 
 // Добавление освещения
-const ambientLight = new THREE.AmbientLight(0x404040);
+const ambientLight = new THREE.AmbientLight(0x404040, 1); // Яркость увеличена
 scene.add(ambientLight);
 
-const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5); // Увеличена яркость
 directionalLight.position.set(5, 5, 5);
 scene.add(directionalLight);
 
